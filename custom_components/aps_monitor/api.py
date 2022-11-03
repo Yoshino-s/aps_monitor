@@ -6,6 +6,7 @@ import aiohttp
 
 _LOGGER: logging.Logger = logging.getLogger(__package__)
 
+BASE_URL = "https://aps.ytl-s.com"
 
 class ApsApiClient:
     def __init__(
@@ -19,14 +20,13 @@ class ApsApiClient:
         else:
             self._session = aiohttp.ClientSession(
                 trust_env=True,
-                base_url="https://aps.ytl-s.com",
             )
 
     async def async_login(self):
         """
         ScriptManager1=UpdatePanel2%7CButton1&__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwULLTE3MTE5NDQzMjVkZCuJu%2FP8CZeFishMjJCy%2FagTThlEjtHt7cDdPLxELxo1&__VIEWSTATEGENERATOR=997ED80C&Label3=8&username=15961477380&password=123456&__ASYNCPOST=true&Button1=%E7%99%BB%E5%BD%95
         """
-        return '电表查询' in await (await self._session.post("/aps/aps.aspx", data={
+        return '电表查询' in await (await self._session.post(BASE_URL + "/aps/aps.aspx", data={
             "username": self._username,
             "password": self._password,
             "Button1": "登录",
@@ -36,7 +36,7 @@ class ApsApiClient:
 
     async def async_get_meter_list(self):
         try:
-            return json.loads(await (await self._session.post("/aps/Owner/Manage.ashx", params={
+            return json.loads(await (await self._session.post(BASE_URL + "/aps/Owner/Manage.ashx", params={
                 "Method": "GetFMeters"
             }, json={
                 "PageSize":999999,"SortAsc":0,"MeterGuanXi":{"guanxi":"Contain","value":""},"NameGuanXi":{"guanxi":"Contain","value":""},"KwhGuanXi":{"guanxi":"NotMoreThan","value":""},"TimeGuanXi":{"guanxi":"NotMoreThan","value":""}
@@ -51,7 +51,7 @@ class ApsApiClient:
 
     async def async_get_instant(self, id: str):
         try:
-            return json.loads(await (await self._session.post("/aps/Operate.aspx/GetInstant", json={
+            return json.loads(await (await self._session.post(BASE_URL + "/aps/Operate.aspx/GetInstant", json={
                 'metid':id
             })).text())['d']['value']
         except:
