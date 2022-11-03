@@ -9,7 +9,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .api import ApsApiClient
-from .const import CONF_PASSWORD, CONF_USERNAME, DOMAIN
+from .const import CONF_PASSWORD, CONF_USERNAME, DOMAIN, STARTUP_MESSAGE
 from .entity import *
 
 SCAN_INTERVAL = timedelta(seconds=12)
@@ -25,7 +25,8 @@ async def async_setup(hass: HomeAssistant, config: Config):
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Set up this integration using UI."""
     if hass.data.get(DOMAIN) is None:
-        raise ConfigEntryNotReady
+        hass.data.setdefault(DOMAIN, {})
+        _LOGGER.info(STARTUP_MESSAGE)
 
     username = entry.data.get(CONF_USERNAME)
     assert isinstance(username, str)
