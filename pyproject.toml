@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "aps-monitor"
+version = "0.1.0"
+description = ""
+authors = ["Yoshino-s <yoshino.prog@gmail.com>"]
+readme = "README.md"
+packages = [{include = "aps_monitor"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+voluptuous = "^0.13.1"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.10.1"
+autopep8 = "^2.0.0"
+homeassistant = "^2022.11.0"
+pytest-homeassistant-custom-component = "^0.12.17"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

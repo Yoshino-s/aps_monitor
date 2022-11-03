@@ -4,13 +4,8 @@ from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
 import voluptuous as vol
 
-from .api import IntegrationBlueprintApiClient
-from .const import (
-    CONF_PASSWORD,
-    CONF_USERNAME,
-    DOMAIN,
-    PLATFORMS,
-)
+from .api import ApsApiClient
+from .const import CONF_PASSWORD, CONF_USERNAME, DOMAIN, PLATFORMS
 
 
 class BlueprintFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
@@ -54,7 +49,7 @@ class BlueprintFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     @staticmethod
     @callback
     def async_get_options_flow(config_entry):
-        return BlueprintOptionsFlowHandler(config_entry)
+        return ApsOptionsFlowHandler(config_entry)
 
     async def _show_config_form(self, user_input):  # pylint: disable=unused-argument
         """Show the configuration form to edit location data."""
@@ -73,15 +68,14 @@ class BlueprintFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         """Return true if credentials is valid."""
         try:
             session = async_create_clientsession(self.hass)
-            client = IntegrationBlueprintApiClient(username, password, session)
-            await client.async_get_data()
-            return True
+            client = ApsApiClient(username, password, session)
+            return await client.async_login()
         except Exception:  # pylint: disable=broad-except
             pass
         return False
 
 
-class BlueprintOptionsFlowHandler(config_entries.OptionsFlow):
+class ApsOptionsFlowHandler(config_entries.OptionsFlow):
     """Blueprint config flow options handler."""
 
     def __init__(self, config_entry):

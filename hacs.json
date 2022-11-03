@@ -1,10 +1,9 @@
 {
-    "name": "Integration blueprint",
+    "name": "APS Monitor",
     "hacs": "1.6.0",
     "domains": [
-        "binary_sensor",
         "sensor",
-        "switch"
+        "power"
     ],
     "homeassistant": "0.118.0"
 }

@@ -14,40 +14,6 @@ it is easier for developers to help each other and for users to start using them
 If you are a developer and you want to add things to this "blueprint" that you think more
 developers will have use for, please open a PR to add it :)
 
-## What?
-
-This repository contains multiple files, here is a overview:
-
-File | Purpose
--- | --
-`.devcontainer/*` | Used for development/testing with VSCODE, more info in the readme file in that dir.
-`.github/ISSUE_TEMPLATE/feature_request.md` | Template for Feature Requests
-`.github/ISSUE_TEMPLATE/issue.md` | Template for issues
-`.vscode/tasks.json` | Tasks for the devcontainer.
-`custom_components/integration_blueprint/translations/*` | [Translation files.](https://developers.home-assistant.io/docs/internationalization/custom_integration)
-`custom_components/integration_blueprint/__init__.py` | The component file for the integration.
-`custom_components/integration_blueprint/api.py` | This is a sample API client.
-`custom_components/integration_blueprint/binary_sensor.py` | Binary sensor platform for the integration.
-`custom_components/integration_blueprint/config_flow.py` | Config flow file, this adds the UI configuration possibilities.
-`custom_components/integration_blueprint/const.py` | A file to hold shared variables/constants for the entire integration.
-`custom_components/integration_blueprint/manifest.json` | A [manifest file](https://developers.home-assistant.io/docs/en/creating_integration_manifest.html) for Home Assistant.
-`custom_components/integration_blueprint/sensor.py` | Sensor platform for the integration.
-`custom_components/integration_blueprint/switch.py` | Switch sensor platform for the integration.
-`tests/__init__.py` | Makes the `tests` folder a module.
-`tests/conftest.py` | Global [fixtures](https://docs.pytest.org/en/stable/fixture.html) used in tests to [patch](https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch) functions.
-`tests/test_api.py` | Tests for `custom_components/integration_blueprint/api.py`.
-`tests/test_config_flow.py` | Tests for `custom_components/integration_blueprint/config_flow.py`.
-`tests/test_init.py` | Tests for `custom_components/integration_blueprint/__init__.py`.
-`tests/test_switch.py` | Tests for `custom_components/integration_blueprint/switch.py`.
-`CONTRIBUTING.md` | Guidelines on how to contribute.
-`example.png` | Screenshot that demonstrate how it might look in the UI.
-`info.md` | An example on a info file (used by [hacs][hacs]).
-`LICENSE` | The license file for the project.
-`README.md` | The file you are reading now, should contain info about the integration, installation and configuration instructions.
-`requirements.txt` | Python packages used by this integration.
-`requirements_dev.txt` | Python packages used to provide [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)/code hints during development of this integration, typically includes packages in `requirements.txt` but may include additional packages
-`requirements_test.txt` | Python packages required to run the tests for this integration, typically includes packages in `requirements_dev.txt` but may include additional packages
-
 ## How?
 
 If you want to use all the potential and features of this blueprint template you

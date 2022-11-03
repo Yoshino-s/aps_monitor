@@ -1,0 +1,28 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Aps",
+                "description": "If you need help with the configuration have a look here: https://github.com/Yoshino-s/aps_monitor",
+                "data": {
+                    "username": "Username",
+                    "password": "Password"
+                }
+            }
+        },
+        "error": {
+            "auth": "Username/Password is wrong."
+        }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "data": {
+                    "binary_sensor": "Binary sensor enabled",
+                    "sensor": "Sensor enabled",
+                    "switch": "Switch enabled"
+                }
+            }
+        }
+    }
+}

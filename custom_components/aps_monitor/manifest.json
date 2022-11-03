@@ -1,0 +1,12 @@
+{
+  "domain": "aps_monitor",
+  "name": "APS Monitor",
+  "documentation": "https://github.com/Yoshino-s/aps_monitor",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/Yoshino-s/aps_monitor/issues",
+  "version": "0.1.0",
+  "config_flow": true,
+  "codeowners": [
+    "@ludeeus"
+  ]
+}
