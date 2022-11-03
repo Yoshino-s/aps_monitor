@@ -35,7 +35,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     session = async_get_clientsession(hass)
     client = ApsApiClient(username, password, session)
 
-    await client.async_login()
+    r = await client.async_login()
+    _LOGGER.info(f"Login result: {r}")
 
     coordinator = ApsDataUpdateCoordinator(hass, client=client, device_list=await client.async_get_meter_list())
 
