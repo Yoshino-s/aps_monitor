@@ -67,9 +67,10 @@ class ApsDataUpdateCoordinator(DataUpdateCoordinator):
     async def _async_update_data(self):
         """Update data via library."""
         try:
-            return await asyncio.gather(*[
+            d = await asyncio.gather(*[
                 self.api.async_get_instant(meter_id) for meter_id in self.device_list
             ])
+            return {meter_id: d[idx] for idx, meter_id in enumerate(self.device_list)}
         except Exception as exception:
             raise UpdateFailed() from exception
 
