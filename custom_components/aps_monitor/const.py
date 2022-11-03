@@ -1,4 +1,4 @@
-"""Constants for integration_blueprint."""
+"""Constants for aps_monitor."""
 # Base component constants
 NAME = "APS Monitor"
 DOMAIN = "aps_monitor"
@@ -6,6 +6,8 @@ DOMAIN_DATA = f"{DOMAIN}_data"
 VERSION = "0.1.0"
 ATTRIBUTION = "Data provided by http://jsonplaceholder.typicode.com/"
 ISSUE_URL = "https://github.com/Yoshino-s/aps_monitor/issues"
+
+PLATFORMS = ["sensor"]
 
 # Icons
 ICON = "mdi:format-quote-close"
