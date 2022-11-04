@@ -1,9 +1,5 @@
 {
     "name": "APS Monitor",
     "hacs": "1.6.0",
-    "domains": [
-        "sensor",
-        "power"
-    ],
     "homeassistant": "0.118.0"
 }
