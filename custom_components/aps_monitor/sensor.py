@@ -17,6 +17,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
     for dev_id in coordinator.device_list:
         entities += [ApsRemainEntity(coordinator, dev_id), ApsUsedEntity(coordinator, dev_id), ApsCurrentEntity(coordinator, dev_id)]
 
-    await async_add_entities(entities)
+    async_add_entities(entities)
 
     hass.data[DOMAIN][f"{entry.entry_id}_devices"] = entities
