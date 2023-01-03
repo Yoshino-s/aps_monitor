@@ -46,7 +46,7 @@ class ApsApiClient:
             if r:
                 return await self.async_get_meter_list()
             else:
-                _LOGGER.error("login failed", exc_info=True)
+                _LOGGER.error(f"login failed {self._username} {self._password}", exc_info=True)
                 raise
 
     async def async_get_instant(self, id: str):
@@ -59,7 +59,7 @@ class ApsApiClient:
             if r:
                 return await self.async_get_instant(id)
             else:
-                _LOGGER.error("login failed", exc_info=True)
+                _LOGGER.error(f"login failed {self._username} {self._password}", exc_info=True)
                 raise
 
 if __name__ == "__main__":
