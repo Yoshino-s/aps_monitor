@@ -36,7 +36,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     session = async_get_clientsession(hass)
     client = ApsApiClient(username, password, session)
     
-    _LOGGER.info(f"{username} {password}")
+    _LOGGER.warn(f"LOGIN {username} {password}")
 
     r = await client.async_login()
 
